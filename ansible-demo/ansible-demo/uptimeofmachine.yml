@@ -1,0 +1,29 @@
+---
+- hosts: web
+  user: ec2-user
+  sudo: true
+
+  # vars:
+  #   pick name: telnet
+  
+  tasks:
+  # - name install {{ pack_name}}
+  #  yum: pkg={{ pack name }} state=absent
+  #  register: xyz
+  #  debug: var=xyz
+   - name: "print date"
+     shell: date
+     register: xyz
+   - debug: var=xyz
+
+
+   - name: "uptime"
+     shell: uptime
+     register: xyz
+   - debug: var=xyz
+
+   - name: "/etc/hosts"
+     shell: cat /etc/hosts
+     register: output
+   - debug: var=output
+ 

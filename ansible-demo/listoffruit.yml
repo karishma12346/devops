@@ -1,0 +1,17 @@
+--- 
+- 
+  name: "Print list of fruits"
+  hosts: web
+
+  vars:
+    fruits: 
+      - Apple
+      - Banana
+      - Grapes
+      - orange
+  tasks: 
+    - 
+      command: "echo \"{{ item }}\""
+      with_items: "{{ fruits }}"
+
+...

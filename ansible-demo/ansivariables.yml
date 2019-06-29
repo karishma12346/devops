@@ -1,0 +1,18 @@
+...
+- hosts: web #group name from the inventory
+  user: ec2-user server Auth
+  sudo: true
+
+  vars:
+    pack name: telnet
+    serv name: telnet
+
+  tasks:
+    - name: Install {{ pack name }}
+      yum: pkg={{ pack name }} state=installed
+      register: abc
+    - debug: var=abc
+    - name: start {{ serv name }}
+      service: name={{ serv name }} state=started
+--
+

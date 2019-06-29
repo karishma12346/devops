@@ -1,0 +1,28 @@
+--- 
+- 
+  hosts: web
+  tasks: 
+    - 
+      become: true
+      name: "Install {{ pack_name }}"
+      yum: "pkg={{ pack_name }} state=installed"
+    
+    -
+      name: "Start {{ serv_name }}"
+      service: "name={{ serv_name }} state=started"
+      register: output
+      become: true
+
+    - 
+      debug: var=output
+    - 
+      debug: "msg=\"Installation is successful\""
+      name: "print succesful message"
+      when: "output is succeeded"
+    - 
+      debug: "msg=\"Installation is failed\""
+      name: "Print Failure Message"
+      when: "output is failed"
+  vars: 
+    pack_name: httpd
+    serv_name: httpd

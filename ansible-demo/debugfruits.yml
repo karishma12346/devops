@@ -1,0 +1,17 @@
+--- 
+- 
+  name: "Print list of fruits"
+  hosts: web
+
+  vars:
+    fruits: 
+      - Apple
+      - Banana
+      - Grapes
+      - orange
+  tasks: 
+    - name: "print list of fruits"
+      debug: "msg=\"{{ fruits }}\""
+      when: "fruits is defined"
+
+...
